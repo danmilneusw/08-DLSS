@@ -1,7 +1,15 @@
+####### THIS IS A BROKEN ATTEMPT :( ###########
+
+
+
+
+
+
 import numpy as np
 import torch
 import torch.nn as nn
 from math import sqrt
+from PIL import Image
 
 class Model(nn.Module):
     def __init__(self, upscale_factor):
@@ -68,7 +76,7 @@ class Model(nn.Module):
 # Instantiate model
 model = Model(2)
 # Load the state dict into the model
-model.load_state_dict(torch.load(r'E:\GitHub Game Engine Optimisation\08-DLSS\03 - AI Model\250224_best_model.pth'))
+model.load_state_dict(torch.load(r'E:\GitHub Game Engine Optimisation\08-DLSS\04 - Pygame Jet Game with SR\250224_best_model.pth'))
 # Ensure the model is in evaluation mode
 model.eval()
 
@@ -98,13 +106,8 @@ from pygame.locals import (
 make_half = True
 
 # Define constants for the screen width and height
-if make_half == True:
-    SCREEN_WIDTH = 256
-    SCREEN_HEIGHT = 256
-else:
-    SCREEN_WIDTH = 128
-    SCREEN_HEIGHT = 128
-
+SCREEN_WIDTH = 256
+SCREEN_HEIGHT = 256
 
 # Define the Player object extending pygame.sprite.Sprite
 # Instead of a surface, we use an image for a better looking sprite
@@ -320,28 +323,41 @@ while running:
         running = False
     """
 
-    # Flip everything to the display
-    pygame.display.flip()
+
 
     frame = pygame.surfarray.array3d(screen)
-    #frame = frame / 255.0  # Normalize pixel values
-    #frame = np.expand_dims(frame, axis=0)  # Add batch dimension
+    Image.fromarray(frame.astype('uint8')).save('output_image.png')
+
     # Convert the numpy array to a PyTorch Tensor
     frame = torch.from_numpy(frame).float()
-    # PyTorch expects the input in the format (batch_size, channels, height, width)
-    frame = frame.permute(2, 0, 1)
-    # Add a batch dimension
+    print(frame.min(), frame.max()) # output is tensor(0.) tensor(250.)
+
+    frame = frame / 255.0
     frame = frame.unsqueeze(0)
+    frame = frame.permute(0, 3, 1, 2)
+    print(frame.min(), frame.max()) # output is tensor(0.) tensor(1.)
 
     output = model(frame)
-    # Remove the batch dimension and reorder the dimensions
-    output = output.squeeze(0).permute(1, 2, 0)
-    # Convert the output Tensor to a numpy array
-    output = output.detach().numpy()
+    output = output.squeeze(0).permute(1, 2, 0) # Remove the batch dimension and reorder the dimensions
+    output = output.detach().numpy() # Convert the output Tensor to a numpy array
+
+    print(output.min(), output.max()) # output is -15.579361 14.12944
+
+    output = output - output.min()  # subtract the minimum value
+    output = output / output.max()  # divide by the maximum value
+    output = (output * 255).astype('uint8')  # scale from [0, 1] to [0, 255]
+    print(output.min(), output.max()) # output is 0 255
+
+    Image.fromarray(output.astype('uint8')).save('output_image2.png')
+
     # Convert the numpy array to a Pygame Surface
     output_surface = pygame.surfarray.make_surface(output)
+
+
     # Blit the output surface to the screen
-    screen.blit(output_surface, (0, 0))
+    screen.blit(output_surface, (64, 64))
+
+    pygame.display.flip()
 
     # Ensure we maintain a 60 frames per second rate
     clock.tick(60)
