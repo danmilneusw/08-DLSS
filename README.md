@@ -127,16 +127,6 @@ To use DLSS requires an RTX GPU (luckily we have these!).
 
 Newer DLSS versions don't require this anymore, but in DLSS version 1 developers had to record gameplay and then pass these images though a Deep Learning neural network which learned the relationship between low resolution and high resolution images.
 
-## Tutorial
-Let's emulate what developers had to do to make their game DLSS v1 compatible but in a simpler Pygame environment.
-
-We'll miss out a lot of the complicated stuff, like we won't reference previous frames or implement motion vectors to do things like track motion blur, but this is ok as we'll work with a simple game. Our steps look like this:
-1. Capture frames from a Pygame game
-2. Downscale these frames so we have the frames at native and half resolution
-3. Train a Deep Learning model to learn the relationship between half resolution and native resolution images of our game so that it can upscale new images
-4. Implement DLSS in Unity while we wait for the model to train
-5. Implement the Super Resolution model we trained on our Pygame game inside the game
-
 ## Summary
 - Reminder of working with Pygame
 - Learn about DLSS and other super-resolution systems
@@ -145,6 +135,24 @@ We'll miss out a lot of the complicated stuff, like we won't reference previous 
 - Attempt to implemented this system inside a Pygame game (this would be a world first -- I haven't even attempted it yet)
 
 ## Tutorial
+Let's emulate what developers had to do to make their game DLSS v1 compatible but in a simpler Pygame environment.
+
+We'll miss out a lot of the complicated stuff, like we won't reference previous frames or implement motion vectors to do things like track motion blur, but this is ok as we'll work with a simple game. Our steps look like this:
+
+**Part 1**
+
+1. Capture frames from a Pygame game
+2. Downscale these frames so we have the frames at native and half resolution
+3. Train a Deep Learning model to learn the relationship between half resolution and native resolution images of our game so that it can upscale new images
+
+**Part 2**
+
+4. Implement DLSS in Unity while we wait for the model to train
+
+**Part 3**
+
+5. Implement the Super Resolution model we trained on our Pygame game inside the game
+
 ### Part 1
 1. Using VS Code, go to the Pygame Jet Game folder and play Pygame_Jet_Game.py (just for fun). The game is the result of [a tutorial](https://realpython.com/pygame-a-primer/), so there's some extra files included.
 2. We need to capture frames from the game to use to train our Deep Learning model. Create a folder called 'frame_captures_256_256' (256x256 is the resolution of the game window) in the same directory as the game. And implement frame capturing by using the code below:
