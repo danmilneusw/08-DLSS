@@ -132,7 +132,7 @@ Newer DLSS versions don't require this anymore, but in DLSS version 1 developers
 - Learn about DLSS and other super-resolution systems
 - Create an actually quite sophisticated yet simple super resolution system
 - Implement DLSS in a Unity project
-- Attempt to implemented this system inside a Pygame game (this would be a world first -- I haven't even attempted it yet)
+- Attempt to implemented this system inside a Pygame game (this would be a world first -- I haven't done this successfully yet)
 
 ## Tutorial
 Let's emulate what developers had to do to make their game DLSS v1 compatible but in a simpler Pygame environment.
@@ -151,7 +151,7 @@ We'll miss out a lot of the complicated stuff, like we won't reference previous 
 
 **Part 3**
 
-5. Implement the Super Resolution model we trained on our Pygame game inside the game
+5. Implement the Super Resolution model we trained on our Pygame game inside the game (**we'll do this next week**)
 
 ### Part 1
 1. Using VS Code, go to the Pygame Jet Game folder and play Pygame_Jet_Game.py (just for fun). The game is the result of [a tutorial](https://realpython.com/pygame-a-primer/), so there's some extra files included.
@@ -208,4 +208,4 @@ This is quite straight forward.
 There is also a plugin for Unreal Engine: https://developer.nvidia.com/rtx/dlss/get-started
 
 ### Part 3
-Hopefully you have finished training by now. So let's implement this model inside our Pygame.
+Hopefully you have finished training by now. So let's implement this model inside our Pygame... (**we'll do this next week**)
