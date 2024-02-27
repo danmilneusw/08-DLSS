@@ -154,7 +154,7 @@ We'll miss out a lot of the complicated stuff, like we won't reference previous 
 5. Implement the Super Resolution model we trained on our Pygame game inside the game (**we'll do this next week**)
 
 ### Part 1
-1. Using VS Code, go to the Pygame Jet Game folder and play Pygame_Jet_Game.py (just for fun). The game is the result of [a tutorial](https://realpython.com/pygame-a-primer/), so there's some extra files included.
+1. Using VS Code, go to the Pygame Jet Game folder and play Pygame_Jet_Game.py (just for fun). The game is the result of [a tutorial](https://realpython.com/pygame-a-primer/), so there's some extra files included. You'll also have to update the directorires to images and audio.
 2. We need to capture frames from the game to use to train our Deep Learning model. Create a folder called 'frame_captures_256_256' (256x256 is the resolution of the game window) in the same directory as the game. And implement frame capturing by using the code below:
 
 ```
