@@ -1,4 +1,4 @@
-# 08-DLSS
+2# 08-DLSS
 ## Introduction
 Rescaling an image in something like Microsoft Paint involves some kind of interpolation that uses an algorithm to decide how to resize it. Some of the most common image interpolation techniques are:
 - Nearest-neighbour
@@ -194,7 +194,7 @@ pygame.mixer.quit()
 8. Update the source and destination directories in the notebook. Select the root Kernel (I think it will be this on the Uni machines, please ask me to check this to confirm it) by selecting the button in the top right and selecting the root python kernel. <div align="center"><img src="Images\Kernel.png" style="height:100px;"/></div>
 9. Run the code cell. This will create a downscaled copy of your frame captures. Now you will have a copy that is half the resolution of the capture (256x256 -> 128x128). It might take up to a minute to run.
 10. Now we can train our super-resolution model. There's one last thing we need to install; open Anaconda Prompt again and run ```conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia```. This will install Pytorch, a popular Machine Learning and Deep Learning framework. You might need to press Y to continue the installation when prompted.
-11. In 02 - Downscaler.ipynb, run through the cells. Click the first cell and press `Shift` + `Enter` to run the cell and move to the next one. I've added notes inside this file letting you know what it's doing.
+11. Open the notebook file in the 03 - AI Model folder, run through the cells. Click the first cell and press `Shift` + `Enter` to run the cell and move to the next one. I've added notes inside this file letting you know what it's doing.
 
 ### Part 2
 If you have completed the previous steps, you should have an AI model training on the dataset you provided. While we wait, we can see how the most recent DLSS version can be implemented inside Unity.
