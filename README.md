@@ -29,7 +29,7 @@ with Image.open('input.jpg') as img:
 
 Viewing the images at their native resolutions, you can see the image is twice as big but doesn't look great.
 
-<!-- <div align="center">
+<div align="center">
   <a href="Extra\image.png" target="_blank">
     <img src="Extra\image.png"/>
   </a>
@@ -39,7 +39,7 @@ Viewing the images at their native resolutions, you can see the image is twice a
   <a href="Extra\output.jpg" target="_blank">
     <img src="Extra\output.jpg"/>
   </a>
-</div> -->
+</div>
 
 In recent years, new technologies have been developed that offer much more advanced ways of upscaling images. And these techniques have been introduced into video game engines.
 
