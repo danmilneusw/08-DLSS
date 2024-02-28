@@ -1,4 +1,4 @@
-2# 08-DLSS
+# 08-DLSS
 ## Introduction
 Rescaling an image in something like Microsoft Paint involves some kind of interpolation that uses an algorithm to decide how to resize it. Some of the most common image interpolation techniques are:
 - Nearest-neighbour
